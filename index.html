@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DueDash | Student Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">✓</div>
+        <div>
+          <h2>DueDash
+
+          </h2>
+          <p>Student planner</p>
+        </div>
+      </div>
+
+      <p class="nav-label">WORKSPACE</p>
+      <button class="nav-item active" data-filter="all">▦ &nbsp; All Tasks</button>
+      <button class="nav-item" data-filter="pending">◷ &nbsp; Pending Work</button>
+      <button class="nav-item" data-filter="completed">✓ &nbsp; Completed</button>
+
+      <div class="sidebar-note">
+        <div class="note-icon">♡♡</div>
+        <h3>One task at a time.</h3>
+        <p>Small steps. Less stress. Better submissions.</p>
+      </div>
+
+      <div class="sidebar-footer">Made for students ♡</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <span class="eyebrow">YOUR ACADEMIC SPACE</span>
+        <span class="today" id="today"></span>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <h1>My Academic Tasks<span class="period">.</span></h1>
+          <p>Keep track of what you've written and what you've uploaded.</p>
+        </div>
+        <button class="primary-btn" id="showForm">+ Add task</button>
+      </section>
+
+      <section class="stats">
+        <article class="stat-card">
+          <span class="stat-icon purple">▦</span>
+          <p>Total tasks</p>
+          <h2 id="totalCount">0</h2>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon green">✓</span>
+          <p>Written</p>
+          <h2 id="writtenCount">0</h2>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon blue">↑</span>
+          <p>Uploaded</p>
+          <h2 id="uploadedCount">0</h2>
+        </article>
+        <article class="stat-card">
+          <span class="stat-icon orange">◷</span>
+          <p>Pending</p>
+          <h2 id="pendingCount">0</h2>
+        </article>
+      </section>
+
+      <section class="progress-card">
+        <div class="progress-heading">
+          <div>
+            <h3>My progress</h3>
+            <p>Tasks with both stages completed</p>
+          </div>
+          <strong id="progressPercent">0%</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </section>
+
+      <section class="task-section">
+        <div class="section-heading">
+          <div>
+            <h2>My task list</h2>
+            <p id="taskSubtitle">All your assignments in one place.</p>
+          </div>
+          <select id="subjectFilter" aria-label="Filter by subject">
+            <option value="all">All subjects</option>
+          </select>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ASSIGNMENT / EXPERIMENT</th>
+                <th>WRITTEN</th>
+                <th>UPLOADED</th>
+                <th>DEADLINE</th>
+                <th>STATUS</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="taskList"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon">✓</div>
+          <h3>Nothing here yet!</h3>
+          <p>Add a task or choose another filter.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>TickTask © Your academic companion</span>
+        <span>Write it. Tick it. Never miss it.</span>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <form class="modal" id="taskForm">
+      <div class="modal-heading">
+        <div>
+          <h2>Add a new task</h2>
+          <p>Just the basics. You can tick it off later.</p>
+        </div>
+        <button type="button" class="close-btn" id="closeForm"
+          aria-label="Close">×</button>
+      </div>
+
+      <label for="taskTitle">Assignment or experiment name</label>
+      <input id="taskTitle" required maxlength="100"
+        placeholder="e.g. Experiment 4 - Exception Handling">
+
+      <label for="taskSubject">Subject</label>
+      <input id="taskSubject" required maxlength="60"
+        placeholder="e.g. Full Stack Java Programming">
+
+      <label for="taskType">Task type</label>
+      <select id="taskType">
+        <option>Experiment</option>
+        <option>Assignment</option>
+        <option>Practical</option>
+        <option>Report</option>
+        <option>Other</option>
+      </select>
+
+      <label for="taskDeadline">Deadline</label>
+      <input id="taskDeadline" type="date" required>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary-btn" id="cancelForm">
+          Cancel
+        </button>
+        <button type="submit" class="primary-btn">Add task</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
